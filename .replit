@@ -23,9 +23,18 @@ args = "Web Scraper"
 name = "Web Scraper"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python main.py https://www.bbc.com/news --pages 2"
+args = "python app.py"
+waitForPort = 5000
 
-[workflows.workflow.metadata]
-outputType = "console"
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 35401
+externalPort = 3000
